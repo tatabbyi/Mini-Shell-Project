@@ -1,24 +1,28 @@
 ## How to Build and Run
-DUMMY CONTENT — e.g. `make && ./cs4023-shell`
+<one or two shell commands to compile and launch the shell>
 
 ## What Works
-DUMMY CONTENT — bullet list of implemented functional requirements.
+<bullet list — tick off each functional requirement you implemented>
 
 ## What Doesn't Work / Known Issues
-DUMMY CONTENT — e.g. "none" or list known issues.
+<honest statement; "none" is fine if everything works>
 
 ## AI Tools Used
-DUMMY CONTENT — e.g. "GitHub Copilot Chat (VS Code)"
+<name each tool; e.g., "GitHub Copilot Chat (VS Code), ChatGPT-4o">
 
 ## Where to Find the AI Critique
-DUMMY CONTENT — points to ai_log/copilot_chat_log.md section(s).
+<point to the specific file(s) and section(s) in ai_log/ where you:
+ - identified an AI error and corrected it (cite the OS concept involved)
+ - questioned a correct but questionable AI design choice>
 
 ## OS Concepts Demonstrated
-- fork()–exec()–wait() lifecycle: DUMMY CONTENT — points to function/line
-- File descriptor inheritance and dup2(): DUMMY CONTENT
-- Pipe as IPC (kernel buffer, write-end reference counting): DUMMY CONTENT
-- Signal handling (SIGINT survival): DUMMY CONTENT
-- Zombie prevention: DUMMY CONTENT
+<for each concept below, one sentence pointing to the relevant function/line in your code>
+- fork()–exec()–wait() lifecycle
+- File descriptor inheritance and dup2()
+- Pipe as IPC (kernel buffer, write-end reference counting)
+- Signal handling (SIGINT survival)
+- Zombie prevention
 
 ## Test Evidence
-DUMMY CONTENT — command + terminal transcript for each test case.
+<for each test case, the exact command and the shell output as a terminal transcript>
+Minimum: multi-argument command, pipe, background process, one edge case.
