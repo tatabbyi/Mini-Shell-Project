@@ -20,11 +20,11 @@ int main(int argc, string argv[]) { //get input
     printf("Entered data = , %s\n", input);//CHECK DO I NEED TO PRINT THIS
     return 0; //might need to move 
 
-//tokenise? the command line into an argument vector? 
+//DONE DRAFT 1tokenise? the command line into an argument vector? 
 //(argv[]) terminated by NULL? when how ?, seperating the program
 //name? what is the program name? from its arguments using spaces an tabs? manually just like printing spaces where for what?
 
-//tokenization is the process of breaking a string into smaller parts , called tokens, using delimiters like spaces, commas or other characters
+//explanaitons:tokenization is the process of breaking a string into smaller parts , called tokens, using delimiters like spaces, commas or other characters
 //strtok() to simplify tokenization  parsing strings 
 //./myprogram is the program name arg1 arg2 are the arguments, so we need to split them from eachother
 //we need to store each token somewhere
@@ -45,11 +45,35 @@ int main(int argc, string argv[]) { //get input
     }
     argv[countOfTokens] = NULL; //tryign to make the poisiton after the last input NULL
     return 0;
-}
+
 //for each non-built in command call fork()
 //to create a child process then call execvp() in the child
 //parent calls waitpid() to collect child's exit status
 //print a message if exit status is non-zero
+    pid_t pid = fork();
+    int status;
+    if (pid < 0)  
+    {
+        perror("error: ");
+        continue; //continue, report problem and carry on 
+    }
+    if (pid == 0) 
+    { /* I am the child  */
+    execvp(argv[0], argv); //argv[0] slot holding command name 
+    exit(-1); //if execvp fails (returns) not sure if this belongs here
+    }
+    else          
+    { 
+    /* I am the parent, pid = child's PID */ 
+    waitpid(pid, &status, 0); //& for pointing to address
+    
+    }
+    if(WIFEXITED(status) && WEXITSTATUS(status))//the child exited normally and its exit code is non zero
+    { 
+        printf("%d: my child exited with a non-zero status %d\n", getpid(), WEXITSTATUS(status));
+    }
+
+}
 
 //handle cmd1 or cmd2  by calling pipe() to create a kernel pipe
 //forking 2 children , redirecting child 1s stdout to the pipe write end
@@ -72,7 +96,6 @@ int main(int argc, string argv[]) { //get input
 
 int main(void) {
     printf("[parent] PID=%d: about to fork\n", getpid());
-
     pid_t pid = fork();
 
     if (pid < 0) {
